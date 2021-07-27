@@ -3,14 +3,9 @@ TARGET_EXEC ?= yobemag
 BUILD_DIR ?= ./build
 SRC_DIRS ?= ./src/imgui ./src/imgui/examples/libs/gl3w/GL
 
-SRCS := main.cpp \
-	./src/imgui/imgui_demo.cpp \
+SRCS := main.cpp $(shell ls ./src/imgui/*.cpp) \
 	./src/imgui/backends/imgui_impl_sdl.cpp \
 	./src/imgui/backends/imgui_impl_opengl3.cpp \
-	./src/imgui/imgui.cpp \
-	./src/imgui/imgui_draw.cpp \
-	./src/imgui/imgui_tables.cpp \
-	./src/imgui/imgui_widgets.cpp \
 	./src/imgui/examples/libs/gl3w/GL/gl3w.c
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
 DEPS := $(OBJS:.o=.d)
